@@ -1,0 +1,249 @@
+[
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "BlobServiceClient",
+        "importPath": "azure.storage.blob",
+        "description": "azure.storage.blob",
+        "isExtraImport": true,
+        "detail": "azure.storage.blob",
+        "documentation": {}
+    },
+    {
+        "label": "PymuDocDataset",
+        "importPath": "magic_pdf.data.dataset",
+        "description": "magic_pdf.data.dataset",
+        "isExtraImport": true,
+        "detail": "magic_pdf.data.dataset",
+        "documentation": {}
+    },
+    {
+        "label": "doc_analyze",
+        "importPath": "magic_pdf.model.doc_analyze_by_custom_model",
+        "description": "magic_pdf.model.doc_analyze_by_custom_model",
+        "isExtraImport": true,
+        "detail": "magic_pdf.model.doc_analyze_by_custom_model",
+        "documentation": {}
+    },
+    {
+        "label": "SupportedPdfParseMethod",
+        "importPath": "magic_pdf.config.enums",
+        "description": "magic_pdf.config.enums",
+        "isExtraImport": true,
+        "detail": "magic_pdf.config.enums",
+        "documentation": {}
+    },
+    {
+        "label": "json",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "json",
+        "description": "json",
+        "detail": "json",
+        "documentation": {}
+    },
+    {
+        "label": "requests",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "requests",
+        "description": "requests",
+        "detail": "requests",
+        "documentation": {}
+    },
+    {
+        "label": "snapshot_download",
+        "importPath": "huggingface_hub",
+        "description": "huggingface_hub",
+        "isExtraImport": true,
+        "detail": "huggingface_hub",
+        "documentation": {}
+    },
+    {
+        "label": "AzureBlobDataReader",
+        "kind": 6,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "class AzureBlobDataReader:\n    def __init__(self, prefix, container_name, connection_string):\n        self.prefix = prefix  # e.g., \"unittest/tmp/\"\n        self.container_name = container_name\n        self.connection_string = connection_string\n        self.blob_service_client = BlobServiceClient.from_connection_string(connection_string)\n        self.container_client = self.blob_service_client.get_container_client(container_name)\n    def read(self, azure_blob_url):\n        \"\"\"\n        Expects azure_blob_url in the format:",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "AzureBlobDataWriter",
+        "kind": 6,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "class AzureBlobDataWriter:\n    def __init__(self, prefix, container_name, connection_string):\n        self.prefix = prefix  # e.g., \"unittest/tmp\" or \"unittest/tmp/images\"\n        self.container_name = container_name\n        self.connection_string = connection_string\n        self.blob_service_client = BlobServiceClient.from_connection_string(connection_string)\n        self.container_client = self.blob_service_client.get_container_client(container_name)\n    def write(self, blob_name, data):\n        \"\"\"\n        Upload data to a blob. The final blob path will be a combination of the prefix and blob_name.",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "container_name",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "container_name = \"aiha\"  # e.g., \"mypdfcontainer\"\nconnection_string = \"DefaultEndpointsProtocol=https;AccountName=aiha;AccountKey=B5JQAKoaMBQJNIEeVtAFym4kCzwSW7RpjwYrbOhY6jKSvJvTT/2dhOHGJFnuDDPcW0F9kdB4KvRV+AStGZRB0w==;EndpointSuffix=core.windows.net\"  # your connection string\n# Create reader and writers\nreader = AzureBlobDataReader('unittest/tmp/', container_name, connection_string)\nwriter = AzureBlobDataWriter('unittest/tmp', container_name, connection_string)\nimage_writer = AzureBlobDataWriter('unittest/tmp/images', container_name, connection_string)\nmd_writer = AzureBlobDataWriter('unittest/tmp', container_name, connection_string)\nlocal_image_dir, local_md_dir = \"output/images\", \"output\"\nimage_dir = os.path.basename(local_image_dir)\n# -----------------------------------------------------------------------------",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "connection_string",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "connection_string = \"DefaultEndpointsProtocol=https;AccountName=aiha;AccountKey=B5JQAKoaMBQJNIEeVtAFym4kCzwSW7RpjwYrbOhY6jKSvJvTT/2dhOHGJFnuDDPcW0F9kdB4KvRV+AStGZRB0w==;EndpointSuffix=core.windows.net\"  # your connection string\n# Create reader and writers\nreader = AzureBlobDataReader('unittest/tmp/', container_name, connection_string)\nwriter = AzureBlobDataWriter('unittest/tmp', container_name, connection_string)\nimage_writer = AzureBlobDataWriter('unittest/tmp/images', container_name, connection_string)\nmd_writer = AzureBlobDataWriter('unittest/tmp', container_name, connection_string)\nlocal_image_dir, local_md_dir = \"output/images\", \"output\"\nimage_dir = os.path.basename(local_image_dir)\n# -----------------------------------------------------------------------------\n# Processing Pipeline",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "reader",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "reader = AzureBlobDataReader('unittest/tmp/', container_name, connection_string)\nwriter = AzureBlobDataWriter('unittest/tmp', container_name, connection_string)\nimage_writer = AzureBlobDataWriter('unittest/tmp/images', container_name, connection_string)\nmd_writer = AzureBlobDataWriter('unittest/tmp', container_name, connection_string)\nlocal_image_dir, local_md_dir = \"output/images\", \"output\"\nimage_dir = os.path.basename(local_image_dir)\n# -----------------------------------------------------------------------------\n# Processing Pipeline\n# -----------------------------------------------------------------------------\n# Path to the PDF in Azure Blob Storage. Use the format \"azure://{container}/{blob_path}\"",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "writer",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "writer = AzureBlobDataWriter('unittest/tmp', container_name, connection_string)\nimage_writer = AzureBlobDataWriter('unittest/tmp/images', container_name, connection_string)\nmd_writer = AzureBlobDataWriter('unittest/tmp', container_name, connection_string)\nlocal_image_dir, local_md_dir = \"output/images\", \"output\"\nimage_dir = os.path.basename(local_image_dir)\n# -----------------------------------------------------------------------------\n# Processing Pipeline\n# -----------------------------------------------------------------------------\n# Path to the PDF in Azure Blob Storage. Use the format \"azure://{container}/{blob_path}\"\npdf_file_name = f\"azure://{container_name}/unittest/tmp/bug5-11.pdf\"",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "image_writer",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "image_writer = AzureBlobDataWriter('unittest/tmp/images', container_name, connection_string)\nmd_writer = AzureBlobDataWriter('unittest/tmp', container_name, connection_string)\nlocal_image_dir, local_md_dir = \"output/images\", \"output\"\nimage_dir = os.path.basename(local_image_dir)\n# -----------------------------------------------------------------------------\n# Processing Pipeline\n# -----------------------------------------------------------------------------\n# Path to the PDF in Azure Blob Storage. Use the format \"azure://{container}/{blob_path}\"\npdf_file_name = f\"azure://{container_name}/unittest/tmp/bug5-11.pdf\"\n# Prepare local output paths and names",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "md_writer",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "md_writer = AzureBlobDataWriter('unittest/tmp', container_name, connection_string)\nlocal_image_dir, local_md_dir = \"output/images\", \"output\"\nimage_dir = os.path.basename(local_image_dir)\n# -----------------------------------------------------------------------------\n# Processing Pipeline\n# -----------------------------------------------------------------------------\n# Path to the PDF in Azure Blob Storage. Use the format \"azure://{container}/{blob_path}\"\npdf_file_name = f\"azure://{container_name}/unittest/tmp/bug5-11.pdf\"\n# Prepare local output paths and names\nlocal_dir = \"output\"",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "image_dir",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "image_dir = os.path.basename(local_image_dir)\n# -----------------------------------------------------------------------------\n# Processing Pipeline\n# -----------------------------------------------------------------------------\n# Path to the PDF in Azure Blob Storage. Use the format \"azure://{container}/{blob_path}\"\npdf_file_name = f\"azure://{container_name}/unittest/tmp/bug5-11.pdf\"\n# Prepare local output paths and names\nlocal_dir = \"output\"\nname_without_suff = os.path.basename(pdf_file_name).split(\".\")[0]\n# Read PDF bytes from Azure Blob Storage",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "pdf_file_name",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "pdf_file_name = f\"azure://{container_name}/unittest/tmp/bug5-11.pdf\"\n# Prepare local output paths and names\nlocal_dir = \"output\"\nname_without_suff = os.path.basename(pdf_file_name).split(\".\")[0]\n# Read PDF bytes from Azure Blob Storage\npdf_bytes = reader.read(pdf_file_name)  # read the pdf content\n# Create a Dataset Instance using the PDF bytes\nds = PymuDocDataset(pdf_bytes)\n# Inference: choose OCR mode or text mode based on PDF classification\nif ds.classify() == SupportedPdfParseMethod.OCR:",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "local_dir",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "local_dir = \"output\"\nname_without_suff = os.path.basename(pdf_file_name).split(\".\")[0]\n# Read PDF bytes from Azure Blob Storage\npdf_bytes = reader.read(pdf_file_name)  # read the pdf content\n# Create a Dataset Instance using the PDF bytes\nds = PymuDocDataset(pdf_bytes)\n# Inference: choose OCR mode or text mode based on PDF classification\nif ds.classify() == SupportedPdfParseMethod.OCR:\n    infer_result = ds.apply(doc_analyze, ocr=True)\n    # Pipeline for OCR mode: write images via image_writer",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "name_without_suff",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "name_without_suff = os.path.basename(pdf_file_name).split(\".\")[0]\n# Read PDF bytes from Azure Blob Storage\npdf_bytes = reader.read(pdf_file_name)  # read the pdf content\n# Create a Dataset Instance using the PDF bytes\nds = PymuDocDataset(pdf_bytes)\n# Inference: choose OCR mode or text mode based on PDF classification\nif ds.classify() == SupportedPdfParseMethod.OCR:\n    infer_result = ds.apply(doc_analyze, ocr=True)\n    # Pipeline for OCR mode: write images via image_writer\n    pipe_result = infer_result.pipe_ocr_mode(image_writer)",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "pdf_bytes",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "pdf_bytes = reader.read(pdf_file_name)  # read the pdf content\n# Create a Dataset Instance using the PDF bytes\nds = PymuDocDataset(pdf_bytes)\n# Inference: choose OCR mode or text mode based on PDF classification\nif ds.classify() == SupportedPdfParseMethod.OCR:\n    infer_result = ds.apply(doc_analyze, ocr=True)\n    # Pipeline for OCR mode: write images via image_writer\n    pipe_result = infer_result.pipe_ocr_mode(image_writer)\nelse:\n    infer_result = ds.apply(doc_analyze, ocr=False)",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "ds",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "ds = PymuDocDataset(pdf_bytes)\n# Inference: choose OCR mode or text mode based on PDF classification\nif ds.classify() == SupportedPdfParseMethod.OCR:\n    infer_result = ds.apply(doc_analyze, ocr=True)\n    # Pipeline for OCR mode: write images via image_writer\n    pipe_result = infer_result.pipe_ocr_mode(image_writer)\nelse:\n    infer_result = ds.apply(doc_analyze, ocr=False)\n    # Pipeline for text mode: write images via image_writer\n    pipe_result = infer_result.pipe_txt_mode(image_writer)",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "model_inference_result",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "model_inference_result = infer_result.get_infer_res()\n# Draw layout and spans results on each page locally\npipe_result.draw_layout(os.path.join(local_md_dir, f\"{name_without_suff}_layout.pdf\"))\npipe_result.draw_span(os.path.join(local_md_dir, f\"{name_without_suff}_spans.pdf\"))\n# Dump markdown and content list to Azure Blob Storage\npipe_result.dump_md(md_writer, f\"{name_without_suff}.md\", image_dir)\npipe_result.dump_content_list(md_writer, f\"{name_without_suff}_content_list.json\", image_dir)\n# Retrieve markdown content and content list (if needed)\nmd_content = pipe_result.get_markdown(image_dir)\ncontent_list_content = pipe_result.get_content_list(image_dir)",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "md_content",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "md_content = pipe_result.get_markdown(image_dir)\ncontent_list_content = pipe_result.get_content_list(image_dir)\n# Get and dump the middle JSON representation\nmiddle_json_content = pipe_result.get_middle_json()\npipe_result.dump_middle_json(md_writer, f'{name_without_suff}_middle.json')",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "content_list_content",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "content_list_content = pipe_result.get_content_list(image_dir)\n# Get and dump the middle JSON representation\nmiddle_json_content = pipe_result.get_middle_json()\npipe_result.dump_middle_json(md_writer, f'{name_without_suff}_middle.json')",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "middle_json_content",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "middle_json_content = pipe_result.get_middle_json()\npipe_result.dump_middle_json(md_writer, f'{name_without_suff}_middle.json')",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "download_json",
+        "kind": 2,
+        "importPath": "download_models_hf",
+        "description": "download_models_hf",
+        "peekOfCode": "def download_json(url):\n    # 下载JSON文件\n    response = requests.get(url)\n    response.raise_for_status()  # 检查请求是否成功\n    return response.json()\ndef download_and_modify_json(url, local_filename, modifications):\n    if os.path.exists(local_filename):\n        data = json.load(open(local_filename))\n        config_version = data.get('config_version', '0.0.0')\n        if config_version < '1.1.1':",
+        "detail": "download_models_hf",
+        "documentation": {}
+    },
+    {
+        "label": "download_and_modify_json",
+        "kind": 2,
+        "importPath": "download_models_hf",
+        "description": "download_models_hf",
+        "peekOfCode": "def download_and_modify_json(url, local_filename, modifications):\n    if os.path.exists(local_filename):\n        data = json.load(open(local_filename))\n        config_version = data.get('config_version', '0.0.0')\n        if config_version < '1.1.1':\n            data = download_json(url)\n    else:\n        data = download_json(url)\n    # 修改内容\n    for key, value in modifications.items():",
+        "detail": "download_models_hf",
+        "documentation": {}
+    }
+]

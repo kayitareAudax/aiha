@@ -1,0 +1,4 @@
+magic-pdf
+huggingface-hub~=0.29.3
+azure-storage-blob
+# you may need to install some other dependent libraries.
